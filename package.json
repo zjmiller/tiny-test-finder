@@ -4,11 +4,11 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "build": "babel src/index.js -o dist/index.js",
-    "lint": "eslint src/index.js; exit 0",
+    "build": "babel src -d dist",
+    "lint": "eslint src; exit 0",
     "prepublish": "npm run build",
     "test": "npm run lint; mocha; exit 0",
-    "watch": "babel src/index.js -o dist/index.js --watch"
+    "watch": "babel src -d dist --watch"
   },
   "author": "Zachary Miller",
   "license": "MIT",
