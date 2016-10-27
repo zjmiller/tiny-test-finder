@@ -1,3 +1,5 @@
+/* eslint-disable no-constant-condition */
+
 import fs from 'fs';
 import path from 'path';
 
@@ -6,7 +8,7 @@ function findDirWithPackageJSON() {
   let curDir = process.cwd();
   let givenUp = false;
 
-  while (!foundIt && !givenUp) {
+  while (true) {
     foundIt = fs.existsSync(path.resolve(curDir, 'package.json'));
     if (foundIt) break;
     if (curDir === '/') {
