@@ -1,7 +1,7 @@
 "use strict";
 
 var expect = require('chai').expect;
-var find = require('../dist/index');
+var findTests = require('../dist/findTests');
 var fs = require('fs');
 var path = require('path');
 var rimraf = require('rimraf');
@@ -26,7 +26,7 @@ describe('Test finder', function() {
   });
 
   it('should find tests', function() {
-    const result = find();
+    const result = findTests();
     expect(result).to.have.members(
       [
         path.resolve(__dirname, __filename),
@@ -37,7 +37,7 @@ describe('Test finder', function() {
   });
 
   it('should allow more test dir names', function() {
-    const result = find({ posTestDirNames: ['test'] });
+    const result = findTests({ posTestDirNames: ['test'] });
     expect(result).to.have.members(
       [
         path.resolve(__dirname, __filename),
@@ -47,7 +47,7 @@ describe('Test finder', function() {
   });
 
   it('should allow less test dir names', function() {
-    const result = find({ posTestDirNames: ['test', '__test__', 'not-test'] });
+    const result = findTests({ posTestDirNames: ['test', '__test__', 'not-test'] });
     expect(result).to.have.members(
       [
         path.resolve(__dirname, __filename),
@@ -59,7 +59,7 @@ describe('Test finder', function() {
   });
 
   it('should allow us to specify dirs to not recursively search', function() {
-    const result = find({ dontSearch: ['node_modules', tmpPath1] });
+    const result = findTests({ dontSearch: ['node_modules', tmpPath1] });
     expect(result).to.have.members(
       [
         path.resolve(__dirname, __filename),

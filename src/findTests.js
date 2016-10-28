@@ -2,7 +2,7 @@ import findDirWithPackageJSON from './findDirWithPackageJSON';
 import findTestDirs from './findTestDirs';
 import getFilePathsFromArrOfDirs from './getFilePathsFromArrOfDirs';
 
-module.exports = (rawOpts = {}) => {
+module.exports = function findTests(rawOpts = {}) {
   const defaultOpts = {
     startingDir: findDirWithPackageJSON(),
     posTestDirNames: ['test', '__test__'],
